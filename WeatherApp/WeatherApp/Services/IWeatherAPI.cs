@@ -8,6 +8,6 @@ namespace WeatherApp.Services
 {
     public interface IWeatherAPI
     {
-        Task<OneCallAPI> GetOneCallAPIAsync(string q, string units);
+        Task<Root> GetWeatherDataAsync(string city, string units);
     }
 }

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+using Newtonsoft.Json;
 
-namespace WeatherApp.Models
+public class Weather
 {
-    public class Weather
-    {
-        public int id { get; set; }
-        public string main { get; set; }
-        public string description { get; set; }
-        public string icon { get; set; }
-        public string icon_url => string.Format("{0}{1}{2}", "https://openweathermap.org/img/wn/", icon, "@4x.png");
+    [JsonProperty("id")]
+    public int Id { get; set; }
 
-    }
+    [JsonProperty("main")]
+    public string Main { get; set; }
+
+    [JsonProperty("description")]
+    public string Description { get; set; }
+
+    [JsonProperty("icon")]
+    public string Icon { get; set; }
 }
+

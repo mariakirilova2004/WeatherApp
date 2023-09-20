@@ -10,21 +10,21 @@ namespace WeatherApp.ViewModels
 {
     public class WeatherViewModel
     {
-        public IWeatherAPI weatherAPI { get; set; }
+        public IWeatherAPI WeatherAPI { get; set; }
 
         public WeatherViewModel()
         {
-            weatherAPI = new WeatherAPI();
+            WeatherAPI = new WeatherAPI();
             Task.Run(APIAsync);
         }
 
-        private IList<OneCallAPI> _weatherList;
-        public IList<OneCallAPI> WeatherList
+        private IList<List> _weatherList;
+        public IList<List> WeatherList
         {
             get
             {
                 if (_weatherList == null)
-                    _weatherList = new ObservableCollection<OneCallAPI>();
+                    _weatherList = new ObservableCollection<List>();
                 return _weatherList;
             }
             set
@@ -35,9 +35,16 @@ namespace WeatherApp.ViewModels
 
         private async Task APIAsync()
         {
-            var weather = await weatherAPI.GetOneCallAPIAsync("Instanbul", "metric");
+            try
+            {
+                var weather = await this.WeatherAPI.GetWeatherDataAsync("Istanbul", "metric");
+                WeatherList = weather.List;
+            }
+            catch (Exception)
+            {
+
+            }
             //    var weather = await WeatherAPI.GetFiveDaysAsync("Istanbul");
-            WeatherList.Add(weather);
         }
     }
 }

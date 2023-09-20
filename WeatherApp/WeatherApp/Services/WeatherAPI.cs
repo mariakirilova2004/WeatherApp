@@ -1,32 +1,44 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace WeatherApp.Services
 {
     public class WeatherAPI : IWeatherAPI
     {
-        
-        public async Task<OneCallAPI> GetOneCallAPIAsync(string q, string units)
+        private const string ApiKey = "86555c34d70146249e4f3f8f93d470d2";
+        private const string BaseUrl = "https://api.openweathermap.org/data/2.5/forecast?q={0}&units={1}&appid={2}";
+
+        public HttpClient HttpClient { get; set; } = new HttpClient();
+
+        public async Task<Root> GetWeatherDataAsync(string city, string units)
         {
-            string OPENWEATHERMAP_API_KEY = await SecureStorage.GetAsync("openWeatherMapApiKey");
-            string BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q={0}&units={1}&appid={2}";
-            OneCallAPI weather = new OneCallAPI();
-            string url = String.Format(BASE_URL,q, units, OPENWEATHERMAP_API_KEY);
-            HttpClient httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(url);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                var posts = JsonConvert.DeserializeObject<OneCallAPI>(content);
-                weather = posts;
+                var url = string.Format(BaseUrl, city, units, ApiKey);
+                var response = await this.HttpClient.GetStringAsync(url);
+
+                if (!string.IsNullOrEmpty(response))
+                {
+                    return JsonConvert.DeserializeObject<Root>(response);
+                }
             }
-            return weather;
+            catch (Exception)
+            {
+
+            }
+
+            return null;
         }
     }
 }
