@@ -39,6 +39,6 @@ namespace WeatherApp.Services
             }
 
             return null;
-        }
+        }       
     }
 }
