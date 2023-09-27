@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class WeatherPage : ContentPage
+	public partial class Hour24WeatherPage : ContentPage
 	{
-		public WeatherPage()
+		public Hour24WeatherPage()
 		{
             InitializeComponent();
 
@@ -22,7 +22,9 @@ namespace WeatherApp.Views
 
             var result = await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
 
-            vm.CurrentWeather.TransformWeatherToDisplay(result);
+            vm.Hour24Weather.TransformWeatherToDisplay(result);
+
+            ListView.ItemsSource = vm.Hour24Weather.ListHourWeatherViewModel;
         }
     }
 }

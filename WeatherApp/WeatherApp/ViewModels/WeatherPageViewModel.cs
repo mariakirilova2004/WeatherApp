@@ -7,7 +7,7 @@ namespace WeatherApp.ViewModels
     {
         public IWeatherAPI WeatherAPI { get; set; }
 
-        public DisplayCurrentWeatherViewModel CurrentWeather { get; set; } = new DisplayCurrentWeatherViewModel();
+        public Hour24WeatherViewModel Hour24Weather { get; set; } = new Hour24WeatherViewModel();
 
         public WeatherPageViewModel()
         {
