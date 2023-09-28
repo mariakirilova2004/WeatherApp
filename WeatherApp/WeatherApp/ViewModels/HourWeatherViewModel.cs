@@ -36,13 +36,13 @@ namespace WeatherApp.ViewModels
             set { this.SetProperty(ref _Index, value); }
         }
 
-        private void TransformWeatherToDisplay(List list)
+        private void TransformWeatherToDisplay(List hour)
         {
-            this.Temp = Math.Round(list.Main.Temp).ToString();
+            this.Temp = Math.Round(hour.Main.Temp).ToString();
 
-            this.Time = DateTime.Parse(list.DtTxt).TimeOfDay.Hours.ToString() + ":00";
+            this.Time = DateTime.Parse(hour.DtTxt).TimeOfDay.Hours.ToString() + ":00";
 
-            this.Icon = "https://openweathermap.org/img/wn/" + list.Weather[0].Icon + "@2x.png";
+            this.Icon = "https://openweathermap.org/img/wn/" + hour.Weather[0].Icon + "@2x.png";
         }
 
         public HourWeatherViewModel(List list)

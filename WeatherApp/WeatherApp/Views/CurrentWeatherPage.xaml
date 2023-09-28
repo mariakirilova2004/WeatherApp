@@ -3,7 +3,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WeatherApp.Views.Hour24WeatherPage">
+             x:Class="WeatherApp.Views.CurrentWeatherPage">
 
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
@@ -23,20 +23,20 @@
                 <StackLayout Spacing="20">
                     <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
                         <StackLayout VerticalOptions="Center">
-                            <Image x:Name="iconImg" Source="{Binding Hour24Weather.Icon}" WidthRequest="67" HeightRequest="50"/>
-                            <Label x:Name="descriptionTxt" Text="{Binding Hour24Weather.WeatherState}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            <Image x:Name="iconImg" Source="{Binding CurrentWeather.Icon}" WidthRequest="67" HeightRequest="50"/>
+                            <Label x:Name="descriptionTxt" Text="{Binding CurrentWeather.WeatherState}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
                         </StackLayout>
                         <StackLayout VerticalOptions="Center">
-                            <Label x:Name="cityTxt" Text="{Binding Hour24Weather.Name}" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                            <Label x:Name="dateTxt" Text="{Binding Hour24Weather.CurrentDayFormatted}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            <Label x:Name="cityTxt" Text="{Binding CurrentWeather.Name}" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label x:Name="dateTxt" Text="{Binding CurrentWeather.CurrentDayFormatted}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0">
-                            <Label x:Name="temperatureTxt" Text="{Binding Hour24Weather.Temp}" TextColor="White" FontSize="150" HorizontalOptions="Center"/>
+                            <Label x:Name="temperatureTxt" Text="{Binding CurrentWeather.Temp}" TextColor="White" FontSize="150" HorizontalOptions="Center"/>
                             <Label Text="°" TextColor="White" FontSize="150" HorizontalOptions="Center"/>
                         </StackLayout>
-                        <Label Text="{Binding Hour24Weather.Metric}" Margin="0,-30,0,0" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                        <Label Text="{Binding CurrentWeather.Metric}" Margin="0,0,0,0" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
                     </StackLayout>
                     <Grid WidthRequest="320" ColumnSpacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid.ColumnDefinitions>
@@ -47,66 +47,63 @@
                         <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="humidity.png" HeightRequest="25" HorizontalOptions="Center"/>
                             <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label x:Name="humidityTxt" Text="{Binding Hour24Weather.Humidity}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Humidity" TextColor="White" Margin="0,-5,0,0" FontSize="11" HorizontalOptions="Center"/>
+                                <Label x:Name="humidityTxt" Text="{Binding CurrentWeather.Humidity}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Humidity" TextColor="White" Margin="0,0,0,0" FontSize="11" HorizontalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="wind.png" HeightRequest="25" HorizontalOptions="Center"/>
                             <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label x:Name="windTxt" Text="{Binding Hour24Weather.Wind}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Wind" TextColor="White" Margin="0,-5,0,0" FontSize="11" HorizontalOptions="Center"/>
+                                <Label x:Name="windTxt" Text="{Binding CurrentWeather.Wind}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Wind" TextColor="White" Margin="0,0,0,0" FontSize="11" HorizontalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="gauge.png" HeightRequest="25" HorizontalOptions="Center"/>
                             <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label x:Name="pressureTxt" Text="{Binding Hour24Weather.Pressure}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                                <Label Text="Pressure" TextColor="White" Margin="0,-5,0,0" FontSize="11" HorizontalOptions="Center"/>
+                                <Label x:Name="pressureTxt" Text="{Binding CurrentWeather.Pressure}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Text="Pressure" TextColor="White" Margin="0,0,0,0" FontSize="11" HorizontalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" ColumnSpacing="0" HeightRequest="160" HorizontalOptions="FillAndExpand">
-            <ListView x:Name="ListView" IsVisible="True">
-                <ListView.ItemTemplate>
+        <Grid Grid.Row="1" ColumnSpacing="2" HeightRequest="160" HorizontalOptions="FillAndExpand">
+            <CollectionView x:Name="CollectionView" ItemsLayout="HorizontalList">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid BackgroundColor="#758ABA" >
-                                <StackLayout BackgroundColor="#758ABA" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" 
+                        <Grid BackgroundColor="#758ABA" >
+                            <StackLayout BackgroundColor="#758ABA" HorizontalOptions="CenterAndExpand" 
                              VerticalOptions="CenterAndExpand">
-                                    <Label x:Name="timeTxt" 
+                                <Label x:Name="timeTxt" 
                                     Text="{Binding Time}"
                                     TextColor="White"
                                     FontSize="13"
                                     HorizontalOptions="CenterAndExpand"/>
-                                    <StackLayout Orientation="Horizontal"
+                                <StackLayout Orientation="Horizontal"
                                     HorizontalOptions="Center"
                                     Spacing="0">
-                                        <Label x:Name="tempTxt" 
+                                    <Label x:Name="tempTxt" 
                                            Text="{Binding Temp}" 
                                            TextColor="White"
                                            FontSize="23"
                                            HorizontalOptions="Center"/>
-                                        <Label Text="°" 
+                                    <Label Text="°" 
                                            TextColor="White"
                                            FontSize="23" 
                                            HorizontalOptions="Center"/>
-                                        <Image x:Name="iconImg"
+                                    <Image x:Name="iconImg"
                                                 Source="{Binding Icon}"
-                                                Margin="0,20" 
-                                                WidthRequest="50"
+                                                WidthRequest="67"
                                                 HeightRequest="50"/>
-                                    </StackLayout>
                                 </StackLayout>
-                            </Grid>
-                        </ViewCell>
+                            </StackLayout>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <!--    <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

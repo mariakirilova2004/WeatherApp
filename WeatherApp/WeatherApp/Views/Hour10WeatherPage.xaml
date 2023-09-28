@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.Days10WeatherPage">
+    <ContentPage.Content>
+        <ListView x:Name="ListView" IsVisible="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="#758ABA" >
+                            <StackLayout BackgroundColor="#758ABA" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" 
+                             VerticalOptions="CenterAndExpand">
+                                <Label
+                                    Text="{Binding Time}"
+                                    TextColor="White"
+                                    FontSize="13"
+                                    HorizontalOptions="CenterAndExpand"/>
+                                <StackLayout Orientation="Horizontal"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+                                    <Label  
+                                           Text="{Binding Temp}" 
+                                           TextColor="White"
+                                           FontSize="23"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="°" 
+                                           TextColor="White"
+                                           FontSize="23" 
+                                           HorizontalOptions="Center"/>
+                                    <Image 
+                                                Source="{Binding Icon}"
+                                                Margin="0,20" 
+                                                WidthRequest="50"
+                                                HeightRequest="50"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

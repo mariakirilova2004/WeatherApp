@@ -11,7 +11,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            MainPage = new Hour24WeatherPage();
+            MainPage = new CurrentWeatherPage();
         }
 
         protected override void OnStart()

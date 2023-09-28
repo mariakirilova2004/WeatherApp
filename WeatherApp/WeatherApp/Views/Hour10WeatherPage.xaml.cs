@@ -1,14 +1,19 @@
-﻿using WeatherApp.ViewModels;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WeatherApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Hour24WeatherPage : ContentPage
-	{
-		public Hour24WeatherPage()
-		{
+    public partial class Days10WeatherPage : ContentPage
+    {
+        public Days10WeatherPage()
+        {
             InitializeComponent();
 
             this.BindingContext = new WeatherPageViewModel();
@@ -22,9 +27,9 @@ namespace WeatherApp.Views
 
             var result = await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
 
-            vm.Hour24Weather.TransformWeatherToDisplay(result);
+            vm.Days10Weather.TransformWeatherToDisplay(result);
 
-            ListView.ItemsSource = vm.Hour24Weather.ListHourWeatherViewModel;
+            ListView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
         }
     }
 }

@@ -23,13 +23,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Hour24WeatherPage.xaml.cs">
-      <DependentUpon>Hour24WeatherPage.xaml</DependentUpon>
+    <Compile Update="Views\CurrentWeatherPage.xaml.cs">
+      <DependentUpon>CurrentWeatherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Hour10WeatherPage.xaml.cs">
+      <DependentUpon>Hour10WeatherPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Hour24WeatherPage.xaml">
+    <EmbeddedResource Update="Views\CurrentWeatherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Hour10WeatherPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

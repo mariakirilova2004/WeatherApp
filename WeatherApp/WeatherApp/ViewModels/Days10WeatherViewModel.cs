@@ -6,7 +6,7 @@ using static System.Net.WebRequestMethods;
 
 namespace WeatherApp.Models
 {
-    public sealed class Hour24WeatherViewModel : ViewModel
+    public sealed class Days10WeatherViewModel : ViewModel
     {
         private string _Temp;
         public string Temp // 30
@@ -71,13 +71,6 @@ namespace WeatherApp.Models
             set { this.SetProperty(ref _icon, value); }
         }
 
-        private List<HourWeatherViewModel> _ListHourWeatherViewModel;
-        public List<HourWeatherViewModel> ListHourWeatherViewModel // List of HourWeatherViewModel
-        {
-            get { return _ListHourWeatherViewModel; }
-            set { this.SetProperty(ref _ListHourWeatherViewModel, value); }
-        }
-
         public void TransformWeatherToDisplay(Root root)
         {
             this.Temp = Math.Round(root.List[0].Main.Temp).ToString();
@@ -98,13 +91,6 @@ namespace WeatherApp.Models
             this.Wind = root.List[0].Wind.Speed.ToString() + "m/s";
 
             this.Pressure = root.List[0].Main.Pressure.ToString() + "hpa";
-
-            this.ListHourWeatherViewModel = root.List.Take(9).Select(l => new HourWeatherViewModel(l)).ToList();
-
-            for (int i = 0; i < this.ListHourWeatherViewModel.Count; i++)
-            {
-                this.ListHourWeatherViewModel[i].Index = i;
-            }
         }
     }
 }
