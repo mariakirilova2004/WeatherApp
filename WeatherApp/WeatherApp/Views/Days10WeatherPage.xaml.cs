@@ -25,11 +25,15 @@ namespace WeatherApp.Views
 
             var vm = this.BindingContext as WeatherPageViewModel;
 
-            var result = await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
+            var locationcoord = await vm.LocationService.GetCurrentLocationCoordinatesAsync();
 
-            vm.Days10Weather.TransformWeatherToDisplay(result);
+            var name = await vm.LocationService.GetCurrentLocationNameAsync(double.Parse(locationcoord.Latitude.ToString()), double.Parse(locationcoord.Longitude.ToString()));
 
-            ListView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+            var result = await vm.WeatherAPI.GetWeatherDataAsync(name.AdminArea.ToString(), "metric");
+
+            vm.CurrentWeather.TransformWeatherToDisplay(result);
+
+            //CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
         }
     }
 }

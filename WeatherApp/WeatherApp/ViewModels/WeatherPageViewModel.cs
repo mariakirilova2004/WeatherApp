@@ -1,4 +1,5 @@
-﻿using WeatherApp.Models;
+﻿using System.Collections.Generic;
+using WeatherApp.Models;
 using WeatherApp.Services;
 using WeatherApp.Services.Location;
 
