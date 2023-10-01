@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Days10WeatherPage : ContentPage
+    public partial class Hours24WeatherPage : ContentPage
     {
-        public Days10WeatherPage()
+        public Hours24WeatherPage()
         {
             InitializeComponent();
             this.BindingContext = new WeatherPageViewModel();
@@ -28,10 +28,10 @@ namespace WeatherApp.Views
             var vm = this.BindingContext as WeatherPageViewModel;
 
             //vm.SearchCommand = new Command(vm.SearchComm);
-            var result =  await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
+            var result = await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
 
-            vm.Days10Weather.TransformWeatherToDisplay(result);
-            CollectionView.ItemsSource = vm.Days10Weather.ListDayWeatherViewModel;
+            vm.CurrentWeather.TransformWeatherToDisplay(result);
+            CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
         }
     }
 }

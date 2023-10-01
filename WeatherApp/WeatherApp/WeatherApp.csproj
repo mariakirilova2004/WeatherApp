@@ -26,6 +26,10 @@
     <Compile Update="Models\MainPageFlyoutMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Hours24WeatherPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Hours24WeatherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -38,6 +42,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\Hours24WeatherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

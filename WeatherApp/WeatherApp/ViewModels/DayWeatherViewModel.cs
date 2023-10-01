@@ -47,10 +47,10 @@ namespace WeatherApp.Models
         {
             this.MinTemp = Math.Round(list.Main.TempMin).ToString();
 
-            this.MinTemp = Math.Round(list.Main.TempMax).ToString();
+            this.MaxTemp = Math.Round(list.Main.TempMax).ToString();
 
-            this.CurrentDayFormatted = DateTime.Parse(list.DtTxt).Day.ToString() 
-                + " " + DateTime.Parse(list.DtTxt).DayOfWeek.ToString();
+            this.CurrentDayFormatted = DateTime.Parse(list.DtTxt).Date.ToShortDateString().ToString() 
+                + "\n" + DateTime.Parse(list.DtTxt).DayOfWeek.ToString();
 
             this.WeatherState = list.Weather[0].Description;
 
