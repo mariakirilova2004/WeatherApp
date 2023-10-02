@@ -18,7 +18,7 @@ namespace WeatherApp.ViewModels
             {
                     new MainPageFlyoutMenuItem { Id = 0, Title = "Home", TargetType = typeof(HomePage) },
                     new MainPageFlyoutMenuItem { Id = 1, Title = "24 Hour Weather", TargetType = typeof(Hours24WeatherPage) },
-                    new MainPageFlyoutMenuItem { Id = 2, Title = "10 Days Weather", TargetType = typeof(Days10WeatherPage) },
+                    new MainPageFlyoutMenuItem { Id = 2, Title = "10 Days Weather", TargetType = typeof(Days6WeatherPage) },
                     new MainPageFlyoutMenuItem { Id = 3, Title = "Settings", TargetType = typeof(HomePage) },
                     new MainPageFlyoutMenuItem { Id = 4, Title = "About", TargetType = typeof(HomePage) },
                 });

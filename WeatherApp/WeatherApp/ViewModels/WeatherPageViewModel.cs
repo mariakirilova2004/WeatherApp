@@ -17,7 +17,7 @@ namespace WeatherApp.ViewModels
         public ILocationService LocationService { get; set; }
 
         public CurrentWeatherViewModel CurrentWeather { get; set; } = new CurrentWeatherViewModel();
-        public Days10WeatherViewModel Days10Weather { get; set; } = new Days10WeatherViewModel();
+        public Days6WeatherViewModel Days10Weather { get; set; } = new Days6WeatherViewModel();
 
         public WeatherPageViewModel()
         {

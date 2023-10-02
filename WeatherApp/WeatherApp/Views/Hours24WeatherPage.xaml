@@ -4,48 +4,35 @@
              x:Class="WeatherApp.Views.Hours24WeatherPage">
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="1">
-            </Grid>
+            <StackLayout>
+                <SearchBar TextChanged="SearchBar_TextChanged" />
+            </StackLayout>
         </Grid>
         <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" Padding="0,40,0,40" HorizontalOptions="CenterAndExpand" BackgroundColor="#758ABA">
             <CollectionView x:Name="CollectionView" ItemsLayout="VerticalGrid, 3">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid BackgroundColor="#758ABA" Padding="0,20,0,20">
-                            <StackLayout BackgroundColor="#758ABA" HorizontalOptions="CenterAndExpand" 
-                             VerticalOptions="CenterAndExpand">
+                        <StackLayout BackgroundColor="#758ABA" Padding="0,20,0,20" HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
                                 <Label x:Name="timeTxt" 
                                     Text="{Binding Time}"
                                     TextColor="White"
                                     FontSize="17"
                                     HorizontalOptions="CenterAndExpand"/>
-                                <StackLayout Orientation="Horizontal"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-                                    <Label x:Name="tempTxt" 
-                                           Text="{Binding Temp}" 
+                                <Label x:Name="tempTxt" 
+                                           Text="{Binding Temp,StringFormat='{}{0}°'}" 
                                            TextColor="White"
                                            FontSize="25"
                                            HorizontalOptions="Center"/>
-                                    <Label Text="°" 
-                                           TextColor="White"
-                                           FontSize="25" 
-                                           HorizontalOptions="Center"/>
-                                </StackLayout>
-                                <Image x:Name="iconImg"
+                            <Image x:Name="iconImg"
                                                 Source="{Binding Icon}"
                                                 WidthRequest="100"
                                                 HeightRequest="75"/>
-                            </StackLayout>
-                        </Grid>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

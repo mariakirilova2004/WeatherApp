@@ -12,26 +12,34 @@ using Xamarin.Forms.Xaml;
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Days10WeatherPage : ContentPage
+    public partial class Days6WeatherPage : ContentPage
     {
-        public Days10WeatherPage()
+        public Days6WeatherPage()
         {
             InitializeComponent();
             this.BindingContext = new WeatherPageViewModel();
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
 
             if (this.BindingContext == null) return;
+        }
+
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
 
             var vm = this.BindingContext as WeatherPageViewModel;
 
-            //vm.SearchCommand = new Command(vm.SearchComm);
-            var result =  await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
+            var result = await vm.WeatherAPI.GetWeatherDataAsync(searchBar.Text, "metric");
 
-            vm.Days10Weather.TransformWeatherToDisplay(result);
-            CollectionView.ItemsSource = vm.Days10Weather.ListDayWeatherViewModel;
+            if(result != null)
+            {
+                vm.Days10Weather.TransformWeatherToDisplay(result);
+
+                CollectionView.ItemsSource = vm.Days10Weather.ListDayWeatherViewModel;
+            }
         }
     }
 }

@@ -20,18 +20,28 @@ namespace WeatherApp.Views
             this.BindingContext = new WeatherPageViewModel();
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
 
             if (this.BindingContext == null) return;
 
             var vm = this.BindingContext as WeatherPageViewModel;
+        }
 
-            //vm.SearchCommand = new Command(vm.SearchComm);
-            var result = await vm.WeatherAPI.GetWeatherDataAsync("Blagoevgrad", "metric");
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
 
-            vm.CurrentWeather.TransformWeatherToDisplay(result);
-            CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+            var vm = this.BindingContext as WeatherPageViewModel;
+
+            var result = await vm.WeatherAPI.GetWeatherDataAsync(searchBar.Text, "metric");
+
+            if (result != null)
+            {
+                vm.CurrentWeather.TransformWeatherToDisplay(result);
+
+                CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+            }
         }
     }
 }

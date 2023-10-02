@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace WeatherApp.Models
 {
-    public sealed class Days10WeatherViewModel : ViewModel
+    public sealed class Days6WeatherViewModel : ViewModel
     {
         private List<DayWeatherViewModel> _ListDayWeatherViewModel;
         public List<DayWeatherViewModel> ListDayWeatherViewModel // List of DayWeatherViewModel
@@ -75,7 +75,7 @@ namespace WeatherApp.Models
             d5.Main.TempMin = dayFive.Min(x => x.Main.TempMin);
             d5.Main.TempMax = dayFive.Max(x => x.Main.TempMax);
 
-            this.ListDayWeatherViewModel.Add(new DayWeatherViewModel(d4));
+            this.ListDayWeatherViewModel.Add(new DayWeatherViewModel(d5));
 
             var daySix = root.List.Where(l => DateTime.Parse(l.DtTxt).Day == DateTime.Now.AddDays(5).Day).ToList();
             if (daySix.Count > 0)
