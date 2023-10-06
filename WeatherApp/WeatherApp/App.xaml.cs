@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using WeatherApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,8 +11,8 @@ namespace WeatherApp
     {
         public App()
         {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
             InitializeComponent();
-
             MainPage = new MainPage();
         }
 

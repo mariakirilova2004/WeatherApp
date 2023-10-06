@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WeatherApp.Resources;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
 using static System.Net.WebRequestMethods;
@@ -86,13 +87,13 @@ namespace WeatherApp.Models
             this.Name = root.City.Name;
 
             this.CurrentDayFormatted = DateTime.Parse(root.List[0].DtTxt).Day.ToString() 
-                + " " + DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString();
+                + " " + AppResources.ResourceManager.GetString(DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString());
 
             this.Metric = "CELSIUS";
 
             this.Humidity = root.List[0].Main.Humidity.ToString() + "%";
 
-            this.WeatherState = root.List[0].Weather[0].Description;
+            this.WeatherState = AppResources.ResourceManager.GetString(root.List[0].Weather[0].Description); 
 
             this.Icon = "https://openweathermap.org/img/wn/" + root.List[0].Weather[0].Icon + "@2x.png";
 

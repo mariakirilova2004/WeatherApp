@@ -2,8 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resource="clr-namespace:WeatherApp.Resources"
              mc:Ignorable="d"
-             x:Class="WeatherApp.Views.HomePage">
+             x:Class="WeatherApp.Views.HomePage"
+             NavigationPage.HasNavigationBar="False">
 
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
@@ -50,17 +52,17 @@
                     <StackLayout VerticalOptions="FillAndExpand">
                         <Image Source="humidity.png" HeightRequest="25" HorizontalOptions="Center"/>
                         <Label Text="{Binding CurrentWeather.Humidity}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Humidity" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResources.Humidity}" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand">
                         <Image Source="wind.png" HeightRequest="25" HorizontalOptions="Center"/>
                         <Label Text="{Binding CurrentWeather.Wind}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Wind" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResources.Wind}" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Column="2" VerticalOptions="FillAndExpand">
                         <Image Source="gauge.png" HeightRequest="25" HorizontalOptions="Center"/>
                         <Label Text="{Binding CurrentWeather.Pressure}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Pressure" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
+                        <Label Text="{x:Static resource:AppResources.Pressure}" TextColor="White" FontSize="11" HorizontalOptions="Center"/>
                     </StackLayout>
                 </Grid>
             </Grid>

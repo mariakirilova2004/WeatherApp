@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:WeatherApp.Resources"
+             x:Class="WeatherApp.Views.AboutPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#758ABA" Padding="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large" Text="{x:Static resource:AppResources.About}"/>
+            <Label Grid.Row="1" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{x:Static resource:AppResources.About_Info}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+    
+    

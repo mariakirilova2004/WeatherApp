@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace WeatherApp.Services
 {
-    public class WeatherAPI : IWeatherAPI
+    public class WeatherAPI : ILanguageService
     {
         private const string ApiKey = "86555c34d70146249e4f3f8f93d470d2";
         private const string BaseUrl = "https://api.openweathermap.org/data/2.5/forecast?q={0}&units={1}&appid={2}";

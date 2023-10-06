@@ -11,9 +11,8 @@ namespace WeatherApp.ViewModels
 {
     public class WeatherPageViewModel 
     {
-        public ICommand SearchCommand { get; set; }
-
-        public IWeatherAPI WeatherAPI { get; set; }
+        public SearchBar SearchBar { get; set; }
+        public ILanguageService WeatherAPI { get; set; }
         public ILocationService LocationService { get; set; }
 
         public CurrentWeatherViewModel CurrentWeather { get; set; } = new CurrentWeatherViewModel();
@@ -23,6 +22,7 @@ namespace WeatherApp.ViewModels
         {
             this.WeatherAPI = new WeatherAPI();
             this.LocationService = new LocationService();
+            this.SearchBar = new SearchBar();
         }
     }
 }

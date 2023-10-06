@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WeatherApp.Resources;
 using WeatherApp.ViewModels;
 using static System.Net.WebRequestMethods;
 
@@ -50,7 +51,7 @@ namespace WeatherApp.Models
             this.MaxTemp = Math.Round(list.Main.TempMax).ToString();
 
             this.CurrentDayFormatted = DateTime.Parse(list.DtTxt).Date.ToShortDateString().ToString() 
-                + "\n" + DateTime.Parse(list.DtTxt).DayOfWeek.ToString();
+                + "\n" + AppResources.ResourceManager.GetString(DateTime.Parse(list.DtTxt).DayOfWeek.ToString());
 
             this.WeatherState = list.Weather[0].Description;
 

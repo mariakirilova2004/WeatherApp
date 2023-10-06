@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using WeatherApp.Resources;
 using WeatherApp.Views;
 
 namespace WeatherApp.ViewModels
@@ -16,11 +17,11 @@ namespace WeatherApp.ViewModels
         {
             MenuItems = new ObservableCollection<MainPageFlyoutMenuItem>(new[]
             {
-                    new MainPageFlyoutMenuItem { Id = 0, Title = "Home", TargetType = typeof(HomePage) },
-                    new MainPageFlyoutMenuItem { Id = 1, Title = "24 Hours Weather", TargetType = typeof(Hours24WeatherPage) },
-                    new MainPageFlyoutMenuItem { Id = 2, Title = "6 Days Weather", TargetType = typeof(Days6WeatherPage) }
-                    //new MainPageFlyoutMenuItem { Id = 3, Title = "Settings", TargetType = typeof(HomePage) },
-                    //new MainPageFlyoutMenuItem { Id = 4, Title = "About", TargetType = typeof(HomePage) },
+                    new MainPageFlyoutMenuItem { Id = 0, Title = AppResources.HomeMenu, TargetType = typeof(HomePage) },
+                    new MainPageFlyoutMenuItem { Id = 1, Title = AppResources.Hours24Menu, TargetType = typeof(Hours24WeatherPage) },
+                    new MainPageFlyoutMenuItem { Id = 2, Title = AppResources.Days6Menu, TargetType = typeof(Days6WeatherPage) },
+                    new MainPageFlyoutMenuItem { Id = 3, Title = AppResources.SettingsMenu, TargetType = typeof(SettingsPage) },
+                    new MainPageFlyoutMenuItem { Id = 4, Title = AppResources.AboutMenu, TargetType = typeof(AboutPage) },
                 });
         }
 

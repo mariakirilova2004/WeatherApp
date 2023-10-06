@@ -6,7 +6,7 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    public interface IWeatherAPI
+    public interface ILanguageService
     {
         Task<Root> GetWeatherDataAsync(string city, string units);
     }
