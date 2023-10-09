@@ -97,6 +97,24 @@ namespace WeatherApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bulgarian.
+        /// </summary>
+        internal static string Bulgarian {
+            get {
+                return ResourceManager.GetString("Bulgarian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CELSIUS.
+        /// </summary>
+        internal static string CELSIUS {
+            get {
+                return ResourceManager.GetString("CELSIUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to clear sky.
         /// </summary>
         internal static string clear_sky {
@@ -151,11 +169,38 @@ namespace WeatherApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ErrorMenu {
+            get {
+                return ResourceManager.GetString("ErrorMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to extreme rain.
         /// </summary>
         internal static string extreme_rain {
             get {
                 return ResourceManager.GetString("extreme rain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FARENHAIT.
+        /// </summary>
+        internal static string FARENHAIT {
+            get {
+                return ResourceManager.GetString("FARENHAIT", resourceCulture);
             }
         }
         
@@ -394,6 +439,15 @@ namespace WeatherApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oops! Something went wrong.
+        /// </summary>
+        internal static string Oops {
+            get {
+                return ResourceManager.GetString("Oops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to overcast clouds.
         /// </summary>
         internal static string overcast_clouds {
@@ -489,6 +543,15 @@ namespace WeatherApp.Resources {
         internal static string SelectLanguage {
             get {
                 return ResourceManager.GetString("SelectLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Metrics.
+        /// </summary>
+        internal static string SelectMetrics {
+            get {
+                return ResourceManager.GetString("SelectMetrics", resourceCulture);
             }
         }
         

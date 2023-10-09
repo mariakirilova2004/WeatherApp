@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WeatherApp.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -34,7 +35,9 @@ namespace WeatherApp.Views
 
             var vm = this.BindingContext as WeatherPageViewModel;
 
-            var result = await vm.WeatherAPI.GetWeatherDataAsync(searchBar.Text, "metric");
+            var metrics = await SecureStorage.GetAsync("metrics");
+
+            var result = await vm.WeatherAPI.GetWeatherDataAsync(searchBar.Text, metrics);
 
             if (result != null)
             {

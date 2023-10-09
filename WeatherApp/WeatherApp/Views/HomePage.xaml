@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:resource="clr-namespace:WeatherApp.Resources"
              mc:Ignorable="d"
-             x:Class="WeatherApp.Views.HomePage"
-             NavigationPage.HasNavigationBar="False">
+             x:Class="WeatherApp.Views.HomePage">
 
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>

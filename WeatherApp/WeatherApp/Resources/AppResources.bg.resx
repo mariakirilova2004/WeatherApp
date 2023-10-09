@@ -129,11 +129,26 @@
   <data name="broken clouds" xml:space="preserve">
     <value>разкъсана облачност</value>
   </data>
+  <data name="Bulgarian" xml:space="preserve">
+    <value>Български</value>
+  </data>
+  <data name="CELSIUS" xml:space="preserve">
+    <value>Целзии</value>
+  </data>
   <data name="clear sky" xml:space="preserve">
     <value>ясно небе</value>
   </data>
   <data name="Days6Menu" xml:space="preserve">
     <value>6-дневна прогноза</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Английски</value>
+  </data>
+  <data name="ErrorMenu" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="FARENHAIT" xml:space="preserve">
+    <value>Фаренхайт</value>
   </data>
   <data name="few clouds" xml:space="preserve">
     <value>частична облачност</value>
@@ -159,6 +174,9 @@
   <data name="Monday" xml:space="preserve">
     <value>Понеделник</value>
   </data>
+  <data name="Oops" xml:space="preserve">
+    <value>Опа! Нещо се случи! и аз не знам какво</value>
+  </data>
   <data name="overcast clouds" xml:space="preserve">
     <value>облачно</value>
   </data>
@@ -179,6 +197,9 @@
   </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value>Избери език</value>
+  </data>
+  <data name="SelectMetrics" xml:space="preserve">
+    <value>Избери мерна единица</value>
   </data>
   <data name="SettingsMenu" xml:space="preserve">
     <value>Настройки</value>

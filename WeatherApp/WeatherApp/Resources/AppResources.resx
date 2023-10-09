@@ -129,6 +129,12 @@
   <data name="broken clouds" xml:space="preserve">
     <value>broken clouds</value>
   </data>
+  <data name="Bulgarian" xml:space="preserve">
+    <value>Bulgarian</value>
+  </data>
+  <data name="CELSIUS" xml:space="preserve">
+    <value>CELSIUS</value>
+  </data>
   <data name="clear sky" xml:space="preserve">
     <value>clear sky</value>
   </data>
@@ -147,8 +153,17 @@
   <data name="dust whirls" xml:space="preserve">
     <value>dust whirls</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ErrorMenu" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="extreme rain" xml:space="preserve">
     <value>extreme rain</value>
+  </data>
+  <data name="FARENHAIT" xml:space="preserve">
+    <value>FARENHAIT</value>
   </data>
   <data name="few clouds" xml:space="preserve">
     <value>few clouds</value>
@@ -228,6 +243,9 @@
   <data name="Monday" xml:space="preserve">
     <value>Monday</value>
   </data>
+  <data name="Oops" xml:space="preserve">
+    <value>Oops! Something went wrong</value>
+  </data>
   <data name="overcast clouds" xml:space="preserve">
     <value>overcast clouds</value>
   </data>
@@ -260,6 +278,9 @@
   </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value>Select Language</value>
+  </data>
+  <data name="SelectMetrics" xml:space="preserve">
+    <value>Select Metrics</value>
   </data>
   <data name="SettingsMenu" xml:space="preserve">
     <value>Settings</value>

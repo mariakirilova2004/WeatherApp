@@ -14,7 +14,6 @@ namespace WeatherApp.ViewModels
         public SearchBar SearchBar { get; set; }
         public ILanguageService WeatherAPI { get; set; }
         public ILocationService LocationService { get; set; }
-
         public CurrentWeatherViewModel CurrentWeather { get; set; } = new CurrentWeatherViewModel();
         public Days6WeatherViewModel Days10Weather { get; set; } = new Days6WeatherViewModel();
 

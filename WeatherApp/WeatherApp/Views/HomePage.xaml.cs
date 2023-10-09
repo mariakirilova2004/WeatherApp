@@ -1,4 +1,6 @@
-﻿using WeatherApp.ViewModels;
+﻿using System;
+using WeatherApp.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,11 +26,20 @@ namespace WeatherApp.Views
 
             var name = await vm.LocationService.GetCurrentLocationNameAsync(double.Parse(locationcoord.Latitude.ToString()), double.Parse(locationcoord.Longitude.ToString()));
 
-            var result = await vm.WeatherAPI.GetWeatherDataAsync(name.AdminArea.ToString(), "metric");
+            try
+            {
+                var metrics = await SecureStorage.GetAsync("metrics");
 
-            vm.CurrentWeather.TransformWeatherToDisplay(result);
+                var result = await vm.WeatherAPI.GetWeatherDataAsync(name.AdminArea.ToString(), metrics);
 
-            CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+                vm.CurrentWeather.TransformWeatherToDisplay(result);
+
+                CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

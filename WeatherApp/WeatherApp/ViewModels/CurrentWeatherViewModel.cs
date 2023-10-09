@@ -4,6 +4,7 @@ using System.Linq;
 using WeatherApp.Resources;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
+using Xamarin.Essentials;
 using static System.Net.WebRequestMethods;
 
 namespace WeatherApp.Models
@@ -80,7 +81,7 @@ namespace WeatherApp.Models
             set { this.SetProperty(ref _ListHourWeatherViewModel, value); }
         }
 
-        public void TransformWeatherToDisplay(Root root)
+        public async void TransformWeatherToDisplay(Root root)
         {
             this.Temp = Math.Round(root.List[0].Main.Temp).ToString();
 
@@ -89,7 +90,16 @@ namespace WeatherApp.Models
             this.CurrentDayFormatted = DateTime.Parse(root.List[0].DtTxt).Day.ToString() 
                 + " " + AppResources.ResourceManager.GetString(DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString());
 
-            this.Metric = "CELSIUS";
+            try
+            {
+                var metric = await SecureStorage.GetAsync("metrics");
+                if (metric == "metric") this.Metric = AppResources.CELSIUS;
+                if (metric == "imperial") this.Metric = AppResources.FARENHAIT;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
             this.Humidity = root.List[0].Main.Humidity.ToString() + "%";
 
