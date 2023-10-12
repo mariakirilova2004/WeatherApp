@@ -2,16 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.ErrorPage"
+             xmlns:resource="clr-namespace:WeatherApp.Resources"
              BackgroundColor="#758ABA">
     <ContentPage.Content>
-        <StackLayout HeightRequest="400">
+        <StackLayout HeightRequest="400" Padding="40, 0, 40, 150">
             <Label Text="{x:Static resource:AppResources.Oops}"
-                   FontSize="Header"
+                   FontSize="Large"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="White"/>
             <Image Source="error.png"/>
-            <Button Text="Try Again" TextColor="#758ABA" BackgroundColor="White" Clicked="Button_Clicked"/>
+            <Button Text="{x:Static resource:AppResources.TryAgain}" TextColor="#758ABA" BackgroundColor="White" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

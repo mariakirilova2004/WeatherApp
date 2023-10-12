@@ -5,6 +5,7 @@ using WeatherApp.Resources;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using static System.Net.WebRequestMethods;
 
 namespace WeatherApp.Models
@@ -74,11 +75,46 @@ namespace WeatherApp.Models
             set { this.SetProperty(ref _icon, value); }
         }
 
+        private bool _isFavorite;
+        public bool IsFavorite // true/false
+        {
+            get { return _isFavorite; }
+            set //begin invoke on main
+            { 
+                this.SetProperty(ref _isFavorite, value);
+            }
+        }
+
         private List<HourWeatherViewModel> _ListHourWeatherViewModel;
         public List<HourWeatherViewModel> ListHourWeatherViewModel // List of HourWeatherViewModel
         {
             get { return _ListHourWeatherViewModel; }
             set { this.SetProperty(ref _ListHourWeatherViewModel, value); }
+        }
+
+        public async void SetFavourites()
+        {
+                if (!_isFavorite)
+                {
+                    //JSON serialization
+                        string list = await SecureStorage.GetAsync("FavouritesList");
+                        list = list.Remove(list.IndexOf(this.Name), this.Name.Count());
+                        await SecureStorage.SetAsync("FavouritesList", list);
+
+                }
+                else if (await SecureStorage.GetAsync("FavouritesList") != null)
+                {
+                    string list = await SecureStorage.GetAsync("FavouritesList");
+                    if(!list.Contains(this.Name))
+                    {
+                        list += $" {this.Name}";
+                        await SecureStorage.SetAsync("FavouritesList", list);
+                    }
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("FavouritesList", this.Name);
+                }
         }
 
         public async void TransformWeatherToDisplay(Root root)
@@ -95,6 +131,13 @@ namespace WeatherApp.Models
                 var metric = await SecureStorage.GetAsync("metrics");
                 if (metric == "metric") this.Metric = AppResources.CELSIUS;
                 if (metric == "imperial") this.Metric = AppResources.FARENHAIT;
+
+                var fv = await SecureStorage.GetAsync("FavouritesList");
+                if (fv != null)
+                {
+                    this.IsFavorite = fv.Contains(this.Name);
+                }
+                else this.IsFavorite = false;
             }
             catch (Exception ex)
             {

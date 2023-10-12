@@ -9,7 +9,7 @@
         </Grid.RowDefinitions>
         <Grid RowSpacing="0">
             <StackLayout>
-                <SearchBar x:Name="searchBar" Text="{Binding }}" TextChanged="SearchBar_TextChanged" />
+                <SearchBar x:Name="searchBar" Text="{Binding SearchBar.Text, Mode=TwoWay}" TextChanged="SearchBar_TextChanged" />
             </StackLayout>
         </Grid>
         <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" HorizontalOptions="CenterAndExpand" BackgroundColor="#758ABA" Padding="0, 30, 0, 30">

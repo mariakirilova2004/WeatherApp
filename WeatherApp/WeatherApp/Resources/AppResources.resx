@@ -165,6 +165,9 @@
   <data name="FARENHAIT" xml:space="preserve">
     <value>FARENHAIT</value>
   </data>
+  <data name="FavouritesMenu" xml:space="preserve">
+    <value>Favourites</value>
+  </data>
   <data name="few clouds" xml:space="preserve">
     <value>few clouds</value>
   </data>
@@ -344,6 +347,9 @@
   </data>
   <data name="tornado" xml:space="preserve">
     <value>tornado</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try Again</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Tuesday</value>

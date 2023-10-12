@@ -13,13 +13,16 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageCurrentWeather : ContentPage
     {
+        public WeatherPageViewModel vm { get; set; }
         public MainPageCurrentWeather()
         {
             InitializeComponent();
-            this.BindingContext = new WeatherPageViewModel();
+            this.vm = new WeatherPageViewModel();
+            this.BindingContext = vm;
         }
 
         protected async override void OnAppearing()
+        
         {
             if (this.BindingContext == null) return;
 
@@ -36,6 +39,11 @@ namespace WeatherApp.Views
             vm.CurrentWeather.TransformWeatherToDisplay(result);
 
             CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            this.vm.CurrentWeather.SetFavourites();
         }
     }
 }

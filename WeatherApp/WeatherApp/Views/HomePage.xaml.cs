@@ -9,11 +9,13 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomePage : ContentPage
 	{
-		public HomePage()
+        public WeatherPageViewModel vm { get; set; }
+
+        public HomePage()
 		{
             InitializeComponent();
-
-            this.BindingContext = new WeatherPageViewModel();
+            this.vm = new WeatherPageViewModel();
+            this.BindingContext = vm;
         }
 
         protected async override void OnAppearing()
@@ -40,6 +42,11 @@ namespace WeatherApp.Views
             {
                 throw;
             }
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            this.vm.CurrentWeather.SetFavourites();
         }
     }
 }

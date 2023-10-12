@@ -19,7 +19,7 @@ namespace WeatherApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.RemovePage(this);
+            App.Current.MainPage = new MainPage();
         }
     }
 }

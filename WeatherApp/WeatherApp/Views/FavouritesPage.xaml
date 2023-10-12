@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.FavouritesPage"
+             BackgroundColor="#758ABA">
+    <ListView x:Name="ListView" IsVisible="True">
+        <!--<ListView.Header>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add New" Clicked="Button_Clicked"></Button>
+                <Button x:Name="Delete" Text="Delete" Clicked="Delete_Clicked"></Button>
+            </StackLayout>
+        </ListView.Header>-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete Item" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}">
+                        </MenuItem>
+                    </ViewCell.ContextActions>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                        <Label Text="{Binding Name}" TextColor="White" FontSize="20"></Label>
+                        <Image Source="{Binding Icon}" WidthRequest="67" HeightRequest="50"></Image>
+                        <Label Text="{Binding Temp,StringFormat='{}{0}°'}" TextColor="White" FontSize="20"></Label>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

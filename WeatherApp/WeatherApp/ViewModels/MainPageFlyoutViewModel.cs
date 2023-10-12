@@ -22,7 +22,8 @@ namespace WeatherApp.ViewModels
                     new MainPageFlyoutMenuItem { Id = 2, Title = AppResources.Days6Menu, TargetType = typeof(Days6WeatherPage) },
                     new MainPageFlyoutMenuItem { Id = 3, Title = AppResources.SettingsMenu, TargetType = typeof(SettingsPage) },
                     new MainPageFlyoutMenuItem { Id = 4, Title = AppResources.AboutMenu, TargetType = typeof(AboutPage) },
-                    new MainPageFlyoutMenuItem { Id = 5, Title = AppResources.ErrorMenu, TargetType = typeof(ErrorPage) }
+                    new MainPageFlyoutMenuItem { Id = 5, Title = AppResources.ErrorMenu, TargetType = typeof(ErrorPage) },
+                    new MainPageFlyoutMenuItem { Id = 5, Title = AppResources.FavouritesMenu, TargetType = typeof(FavouritesPage) }
                 });
         }
 

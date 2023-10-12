@@ -15,29 +15,26 @@ namespace WeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Hours24WeatherPage : ContentPage
     {
+        public WeatherPageViewModel vm { get; set; }
         public Hours24WeatherPage()
         {
             InitializeComponent();
-            this.BindingContext = new WeatherPageViewModel();
+            vm = new WeatherPageViewModel();
+            this.BindingContext = vm;
         }
 
         protected override void OnAppearing()
         {
 
             if (this.BindingContext == null) return;
-
-            var vm = this.BindingContext as WeatherPageViewModel;
         }
 
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SearchBar searchBar = (SearchBar)sender;
-
-            var vm = this.BindingContext as WeatherPageViewModel;
 
             var metrics = await SecureStorage.GetAsync("metrics");
 
-            var result = await vm.WeatherAPI.GetWeatherDataAsync(searchBar.Text, metrics);
+            var result = await vm.WeatherAPI.GetWeatherDataAsync(vm.SearchBar.Text, metrics);
 
             if (result != null)
             {

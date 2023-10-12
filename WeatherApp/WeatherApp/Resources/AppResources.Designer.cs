@@ -205,6 +205,15 @@ namespace WeatherApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favourites.
+        /// </summary>
+        internal static string FavouritesMenu {
+            get {
+                return ResourceManager.GetString("FavouritesMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to few clouds.
         /// </summary>
         internal static string few_clouds {
@@ -741,6 +750,15 @@ namespace WeatherApp.Resources {
         internal static string tornado {
             get {
                 return ResourceManager.GetString("tornado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try Again.
+        /// </summary>
+        internal static string TryAgain {
+            get {
+                return ResourceManager.GetString("TryAgain", resourceCulture);
             }
         }
         

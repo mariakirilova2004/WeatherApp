@@ -23,7 +23,7 @@ namespace WeatherApp.Views
 
             vm = new WeatherPageViewModel();
             this.BindingContext = vm;
-            vm.SearchBar.SetBinding(Xamarin.Forms.SearchBar.TextProperty, new Binding("Text", BindingMode.TwoWay));
+            //vm.SearchBar.SetBinding(Xamarin.Forms.SearchBar.TextProperty, new Binding("Text", BindingMode.TwoWay));
 
         }
 
