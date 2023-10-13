@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Android", "Weath
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.iOS", "WeatherApp\WeatherApp.iOS\WeatherApp.iOS.csproj", "{D3432C45-903C-46EA-96D9-CB249CAA7A24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp\WeatherApp.csproj", "{F61CAD7D-A9CB-40F5-B439-BFE9FA88E1E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp", "WeatherApp\WeatherApp\WeatherApp.csproj", "{F61CAD7D-A9CB-40F5-B439-BFE9FA88E1E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Tests", "WeatherApp.Tests\WeatherApp.Tests.csproj", "{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,30 @@ Global
 		{F61CAD7D-A9CB-40F5-B439-BFE9FA88E1E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{F61CAD7D-A9CB-40F5-B439-BFE9FA88E1E8}.Release|x86.Build.0 = Release|Any CPU
 		{F61CAD7D-A9CB-40F5-B439-BFE9FA88E1E8}.Release|x86.Deploy.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|x64.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Debug|x86.Build.0 = Debug|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|ARM.Build.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|iPhone.Build.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|x64.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|x64.Build.0 = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F6CC05A-16A9-4EC1-807E-C92ACB56DA2A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

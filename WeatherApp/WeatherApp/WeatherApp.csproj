@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Models\MainPageFlyoutMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>

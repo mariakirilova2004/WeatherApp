@@ -16,7 +16,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <BoxView Grid.RowSpan="2" BackgroundColor="#7585BA" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <BoxView  Grid.RowSpan="2" BackgroundColor="#7585BA" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <Image Aspect="AspectFill" Grid.RowSpan="2" Source="bg.png" Opacity="0.5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <Image Aspect="AspectFill" Grid.RowSpan="2" Source="overlay.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <Grid Grid.Row="1" Margin="50, 50, 50, 0">
@@ -34,13 +34,13 @@
                         <StackLayout>
                             <Image Source="{Binding CurrentWeather.Icon}" WidthRequest="67" HeightRequest="50"/>
                             <Label Text="{Binding CurrentWeather.WeatherState}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
-                            <CheckBox IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="End"/>
                         </StackLayout>
                     </Grid>
                     <Grid Grid.Column="1" VerticalOptions="Center">
                         <StackLayout>
                             <Label Text="{Binding CurrentWeather.Name}" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Label Text="{Binding CurrentWeather.CurrentDayFormatted}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
+                            <CheckBox IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="End"/>
                         </StackLayout>
                     </Grid>
                 </Grid>

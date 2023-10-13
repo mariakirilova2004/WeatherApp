@@ -9,9 +9,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
-using WeatherApp.Views;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace WeatherApp.Services.Weather
 {
@@ -24,6 +21,7 @@ namespace WeatherApp.Services.Weather
 
         public async Task<Root> GetWeatherDataAsync(string city, string units)
         {
+            if (units == null) units = "metric";
             var url = string.Format(BaseUrl, city, units, ApiKey);
             var response = await HttpClient.GetStringAsync(url);
 
