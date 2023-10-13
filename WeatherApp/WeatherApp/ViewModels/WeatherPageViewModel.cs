@@ -5,6 +5,7 @@ using System.Windows.Input;
 using WeatherApp.Models;
 using WeatherApp.Services;
 using WeatherApp.Services.Location;
+using WeatherApp.Services.Weather;
 using Xamarin.Forms;
 
 namespace WeatherApp.ViewModels
@@ -14,9 +15,9 @@ namespace WeatherApp.ViewModels
         public SearchBar SearchBar { get; set; }
         public ILanguageService WeatherAPI { get; set; }
         public ILocationService LocationService { get; set; }
-        public CurrentWeatherViewModel CurrentWeather { get; set; } = new CurrentWeatherViewModel();
-        public Days6WeatherViewModel Days10Weather { get; set; } = new Days6WeatherViewModel();
-        public FavouritesViewModel Favourites { get; set; } = new FavouritesViewModel();
+        public HomePageViewModel CurrentWeather { get; set; } = new HomePageViewModel();
+        public Days6WeatherPageViewModel Days6Weather { get; set; } = new Days6WeatherPageViewModel();
+        public FavouritesPageViewModel Favourites { get; set; } = new FavouritesPageViewModel();
 
         public WeatherPageViewModel()
         {

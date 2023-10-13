@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WeatherApp.Resources;
+using WeatherApp.Services.Favorites;
 using WeatherApp.Services.Location;
 using WeatherApp.ViewModels;
 using Xamarin.Essentials;
@@ -10,7 +12,7 @@ using static System.Net.WebRequestMethods;
 
 namespace WeatherApp.Models
 {
-    public sealed class CurrentWeatherViewModel : ViewModel
+    public sealed class HomePageViewModel : ViewModel
     {
         private string _Temp;
         public string Temp // 30
@@ -92,39 +94,18 @@ namespace WeatherApp.Models
             set { this.SetProperty(ref _ListHourWeatherViewModel, value); }
         }
 
-        public async void SetFavourites()
-        {
-                if (!_isFavorite)
-                {
-                    //JSON serialization
-                        string list = await SecureStorage.GetAsync("FavouritesList");
-                        list = list.Remove(list.IndexOf(this.Name), this.Name.Count());
-                        await SecureStorage.SetAsync("FavouritesList", list);
+        public IFavoritesService favoritesService { get; set; } = new FavoritesService();
 
-                }
-                else if (await SecureStorage.GetAsync("FavouritesList") != null)
-                {
-                    string list = await SecureStorage.GetAsync("FavouritesList");
-                    if(!list.Contains(this.Name))
-                    {
-                        list += $" {this.Name}";
-                        await SecureStorage.SetAsync("FavouritesList", list);
-                    }
-                }
-                else
-                {
-                    await SecureStorage.SetAsync("FavouritesList", this.Name);
-                }
-        }
-
-        public async void TransformWeatherToDisplay(Root root)
+        public async Task TransformWeatherToDisplay(Root root)
         {
             this.Temp = Math.Round(root.List[0].Main.Temp).ToString();
 
             this.Name = root.City.Name;
 
+            var dayOfWeek = DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString();
+
             this.CurrentDayFormatted = DateTime.Parse(root.List[0].DtTxt).Day.ToString() 
-                + " " + AppResources.ResourceManager.GetString(DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString());
+                + " " + AppResources.ResourceManager.GetString(dayOfWeek, AppResources.Culture);
 
             try
             {
@@ -138,27 +119,29 @@ namespace WeatherApp.Models
                     this.IsFavorite = fv.Contains(this.Name);
                 }
                 else this.IsFavorite = false;
+
+                this.Humidity = root.List[0].Main.Humidity.ToString() + "%";
+
+                var weatherState = root.List[0].Weather[0].Description;
+
+                this.WeatherState = AppResources_bg.ResourceManager.GetString(weatherState, AppResources.Culture); 
+
+                this.Icon = "https://openweathermap.org/img/wn/" + root.List[0].Weather[0].Icon + "@2x.png";
+
+                this.Wind = root.List[0].Wind.Speed.ToString() + "m/s";
+
+                this.Pressure = root.List[0].Main.Pressure.ToString() + "hpa";
+
+                this.ListHourWeatherViewModel = root.List.Take(9).Select(l => new HourWeatherViewModel(l)).ToList();
+
+                for (int i = 0; i < this.ListHourWeatherViewModel.Count; i++)
+                {
+                    this.ListHourWeatherViewModel[i].Index = i;
+                }
             }
             catch (Exception ex)
             {
-                throw;
-            }
-
-            this.Humidity = root.List[0].Main.Humidity.ToString() + "%";
-
-            this.WeatherState = AppResources.ResourceManager.GetString(root.List[0].Weather[0].Description); 
-
-            this.Icon = "https://openweathermap.org/img/wn/" + root.List[0].Weather[0].Icon + "@2x.png";
-
-            this.Wind = root.List[0].Wind.Speed.ToString() + "m/s";
-
-            this.Pressure = root.List[0].Main.Pressure.ToString() + "hpa";
-
-            this.ListHourWeatherViewModel = root.List.Take(9).Select(l => new HourWeatherViewModel(l)).ToList();
-
-            for (int i = 0; i < this.ListHourWeatherViewModel.Count; i++)
-            {
-                this.ListHourWeatherViewModel[i].Index = i;
+                throw ex;
             }
         }
     }

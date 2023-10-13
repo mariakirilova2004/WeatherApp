@@ -26,21 +26,21 @@ namespace WeatherApp.Services.Location
 
                 return null;
             }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException ex)
             {
-                // Handle not supported on device exception
+                throw ex;
             }
-            catch (FeatureNotEnabledException fneEx)
+            catch (FeatureNotEnabledException ex)
             {
-                // Handle not enabled on device exception
+                throw ex;
             }
-            catch (PermissionException pEx)
+            catch (PermissionException ex)
             {
-                // Handle permission exception
+                throw ex;
             }
             catch (Exception ex)
             {
-                // Unable to get location
+                throw ex;
             }
 
             return null;
@@ -60,7 +60,7 @@ namespace WeatherApp.Services.Location
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                throw ex;
             }
             return null;
         }
@@ -79,7 +79,7 @@ namespace WeatherApp.Services.Location
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                throw ex;
             }
             return null;
         }

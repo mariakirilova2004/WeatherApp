@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:WeatherApp.Models"
-             x:Class="WeatherApp.Views.Days6WeatherPage">
+             x:Class="WeatherApp.Views.Days6WeatherPage"
+              BackgroundColor="#758ABA" >
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid RowSpacing="0">
             <StackLayout>
-                <SearchBar x:Name="searchBar" Text="{Binding SearchBar.Text, Mode=TwoWay}" TextChanged="SearchBar_TextChanged" />
+                <SearchBar x:Name="searchBar" Text="{Binding SearchBar.Text, Mode=TwoWay}" TextColor="White" TextChanged="SearchBar_TextChanged" />
             </StackLayout>
         </Grid>
-        <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" HorizontalOptions="CenterAndExpand" BackgroundColor="#758ABA" Padding="0, 30, 0, 30">
+        <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" HorizontalOptions="CenterAndExpand" Padding="0, 30, 0, 30">
             <CollectionView x:Name="CollectionView" ItemsLayout="VerticalGrid, 3">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -128,6 +130,11 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>-->
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackLayout>
+                <CheckBox IsVisible="{Binding Days6Weather.Name}" IsChecked="{Binding Days6Weather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"/>
+            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>

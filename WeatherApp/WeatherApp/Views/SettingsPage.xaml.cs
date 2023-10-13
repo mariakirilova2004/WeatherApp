@@ -32,30 +32,37 @@ namespace WeatherApp.Views
 
         async void OnUpdateSaveClicked(object sender, System.EventArgs e)
         {
-            if (picker1.SelectedItem != null)
+            try
             {
-                var language = CultureInfo.GetCultures(CultureTypes.NeutralCultures)
-                                          .ToList()
-                                          .First(element => element.EnglishName
-                                          .Contains(picker1.SelectedItem.ToString()));
-                Thread.CurrentThread.CurrentUICulture = language;
-                AppResources.Culture = language;
-            }
+                if (picker1.SelectedItem != null)
+                {
+                    var language = CultureInfo.GetCultures(CultureTypes.NeutralCultures)
+                                              .ToList()
+                                              .First(element => element.EnglishName
+                                              .Contains(picker1.SelectedItem.ToString()));
+                    Thread.CurrentThread.CurrentUICulture = language;
+                    AppResources.Culture = language;
+                }
 
-            if (picker2.SelectedItem != null)
+                if (picker2.SelectedItem != null)
+                {
+                    try
+                    {
+                        if (picker2.SelectedItem.ToString() == "CELSIUS") await SecureStorage.SetAsync("metrics", "metric");
+                        if (picker2.SelectedItem.ToString() == "FARENHAIT") await SecureStorage.SetAsync("metrics", "imperial");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+                }
+
+                App.Current.MainPage = new MainPage();
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    if (picker2.SelectedItem.ToString() == "CELSIUS") await SecureStorage.SetAsync("metrics", "metric");
-                    if (picker2.SelectedItem.ToString() == "FARENHAIT") await SecureStorage.SetAsync("metrics", "imperial");
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                await Navigation.PushAsync(new ErrorPage());
             }
-
-            App.Current.MainPage = new MainPage();
         }
     }
 }

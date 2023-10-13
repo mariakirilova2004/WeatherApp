@@ -22,28 +22,41 @@ namespace WeatherApp.Views
         }
 
         protected async override void OnAppearing()
-        
         {
-            if (this.BindingContext == null) return;
+            try
+            {
+                if (this.BindingContext == null) return;
 
-            var vm = this.BindingContext as WeatherPageViewModel;
+                var vm = this.BindingContext as WeatherPageViewModel;
 
-            var locationcoord = await vm.LocationService.GetCurrentLocationCoordinatesAsync();
+                var locationcoord = await vm.LocationService.GetCurrentLocationCoordinatesAsync();
 
-            var name = await vm.LocationService.GetCurrentLocationNameAsync(double.Parse(locationcoord.Latitude.ToString()), double.Parse(locationcoord.Longitude.ToString()));
+                var name = await vm.LocationService.GetCurrentLocationNameAsync(double.Parse(locationcoord.Latitude.ToString()), double.Parse(locationcoord.Longitude.ToString()));
 
-            var metrics = await SecureStorage.GetAsync("metrics");
+                var metrics = await SecureStorage.GetAsync("metrics");
 
-            var result = await vm.WeatherAPI.GetWeatherDataAsync(name.AdminArea.ToString(), metrics);
+                var result = await vm.WeatherAPI.GetWeatherDataAsync(name.Locality.ToString(), metrics);
 
-            vm.CurrentWeather.TransformWeatherToDisplay(result);
+                await vm.CurrentWeather.TransformWeatherToDisplay(result);
 
-            CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+                CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+            }
+            catch (Exception ex)
+            {
+                await Navigation.PushAsync(new ErrorPage());
+            }
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private async void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            this.vm.CurrentWeather.SetFavourites();
+            try
+            {
+                await this.vm.CurrentWeather.favoritesService.SetFavourites(this.vm.CurrentWeather.IsFavorite, this.vm.CurrentWeather.Name);
+            }
+            catch (Exception ex)
+            {
+                await Navigation.PushAsync(new ErrorPage());
+            }
         }
     }
 }

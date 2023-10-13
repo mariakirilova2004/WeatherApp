@@ -40,7 +40,15 @@ namespace WeatherApp.ViewModels
 
         public FavouriteViewModel(Root root)
         {
-            TransformWeatherToDisplay(root);
+            try
+            {
+                TransformWeatherToDisplay(root);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

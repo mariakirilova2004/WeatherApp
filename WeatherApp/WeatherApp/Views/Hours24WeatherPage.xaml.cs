@@ -31,16 +31,34 @@ namespace WeatherApp.Views
 
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-            var metrics = await SecureStorage.GetAsync("metrics");
-
-            var result = await vm.WeatherAPI.GetWeatherDataAsync(vm.SearchBar.Text, metrics);
-
-            if (result != null)
+            try
             {
-                vm.CurrentWeather.TransformWeatherToDisplay(result);
+                var metrics = await SecureStorage.GetAsync("metrics");
 
-                CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+                var  result = await vm.WeatherAPI.GetWeatherDataAsync(vm.SearchBar.Text, metrics);
+
+                if (result != null)
+                {
+                    await vm.CurrentWeather.TransformWeatherToDisplay(result);
+
+                    CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                //await Navigation.PushAsync(new ErrorPage());
+            }
+        }
+
+        private async void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            try
+            {
+                await this.vm.CurrentWeather.favoritesService.SetFavourites(this.vm.Days6Weather.IsFavorite, this.vm.Days6Weather.Name);
+            }
+            catch (Exception ex)
+            {
+                await Navigation.PushAsync(new ErrorPage());
             }
         }
     }

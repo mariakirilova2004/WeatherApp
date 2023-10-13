@@ -46,21 +46,37 @@ namespace WeatherApp.Models
 
         public void TransformWeatherToDisplay(List list)
         {
-            this.MinTemp = Math.Round(list.Main.TempMin).ToString();
+            try
+            {
+                this.MinTemp = Math.Round(list.Main.TempMin).ToString();
 
-            this.MaxTemp = Math.Round(list.Main.TempMax).ToString();
+                this.MaxTemp = Math.Round(list.Main.TempMax).ToString();
 
-            this.CurrentDayFormatted = DateTime.Parse(list.DtTxt).Date.ToShortDateString().ToString() 
-                + "\n" + AppResources.ResourceManager.GetString(DateTime.Parse(list.DtTxt).DayOfWeek.ToString());
+                this.CurrentDayFormatted = DateTime.Parse(list.DtTxt).Date.ToShortDateString().ToString()
+                    + "\n" + AppResources.ResourceManager.GetString(DateTime.Parse(list.DtTxt).DayOfWeek.ToString());
 
-            this.WeatherState = list.Weather[0].Description;
+                this.WeatherState = list.Weather[0].Description;
 
-            this.Icon = "https://openweathermap.org/img/wn/" + list.Weather[0].Icon + "@2x.png";
+                this.Icon = "https://openweathermap.org/img/wn/" + list.Weather[0].Icon + "@2x.png";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public DayWeatherViewModel(List list)
         {
-            TransformWeatherToDisplay(list);
+            try
+            {
+                TransformWeatherToDisplay(list);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

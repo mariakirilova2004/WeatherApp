@@ -47,7 +47,14 @@ namespace WeatherApp.ViewModels
 
         public HourWeatherViewModel(List list)
         {
-            TransformWeatherToDisplay(list);
+            try
+            {
+                TransformWeatherToDisplay(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

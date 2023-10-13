@@ -9,10 +9,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
+using WeatherApp.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Services.Weather
 {
     public class WeatherAPI : ILanguageService
     {
@@ -23,22 +24,15 @@ namespace WeatherApp.Services
 
         public async Task<Root> GetWeatherDataAsync(string city, string units)
         {
-            try
-            {
-                var url = string.Format(BaseUrl, city, units, ApiKey);
-                var response = await this.HttpClient.GetStringAsync(url);
+            var url = string.Format(BaseUrl, city, units, ApiKey);
+            var response = await HttpClient.GetStringAsync(url);
 
-                if (!string.IsNullOrEmpty(response))
-                {
-                    return JsonConvert.DeserializeObject<Root>(response);
-                }
-            }
-            catch (Exception)
+            if (!string.IsNullOrEmpty(response))
             {
-
+                return JsonConvert.DeserializeObject<Root>(response);
             }
 
             return null;
-        }       
+        }
     }
 }

@@ -28,21 +28,21 @@ namespace WeatherApp.Views
         protected async override void OnAppearing()
         {
 
-            if (this.BindingContext == null) return;
-
-            var vm = this.BindingContext as WeatherPageViewModel;
-
-            var res = await vm.Favourites.GetFavouritesNameAsync();
-
             try
             {
+                if (this.BindingContext == null) return;
+
+                var vm = this.BindingContext as WeatherPageViewModel;
+
+                var res = await vm.Favourites.GetFavouritesNameAsync();
+
                 var metrics = await SecureStorage.GetAsync("metrics");
 
                 List<Root> result = new List<Root>();
 
                 foreach (var favourite in res)
                 {
-                    result.Add(await vm.WeatherAPI.GetWeatherDataAsync(favourite, metrics));
+                    if(favourite != "") result.Add(await vm.WeatherAPI.GetWeatherDataAsync(favourite, metrics));
                 }
 
                 vm.Favourites.TransformWeatherToDisplay(result);
@@ -51,7 +51,7 @@ namespace WeatherApp.Views
             }
             catch (Exception ex)
             {
-                throw;
+                await Navigation.PushAsync(new ErrorPage());
             }
         }
 

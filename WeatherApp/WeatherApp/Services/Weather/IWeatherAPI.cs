@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Services.Weather
 {
     public interface ILanguageService
     {
