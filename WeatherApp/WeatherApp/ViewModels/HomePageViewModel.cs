@@ -116,7 +116,7 @@ namespace WeatherApp.Models
                 var fv = await SecureStorage.GetAsync("FavouritesList");
                 if (fv != null)
                 {
-                    this.IsFavorite = fv.Contains(this.Name);
+                    this.IsFavorite = fv.ToLower().Contains(this.Name.ToLower());
                 }
                 else this.IsFavorite = false;
 

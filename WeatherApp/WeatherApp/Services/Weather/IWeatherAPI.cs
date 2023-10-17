@@ -9,5 +9,6 @@ namespace WeatherApp.Services.Weather
     public interface ILanguageService
     {
         Task<Root> GetWeatherDataAsync(string city, string units);
+        Task<Suggestion> GetCityNames(string city);
     }
 }

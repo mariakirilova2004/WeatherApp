@@ -115,7 +115,7 @@
         </Grid>
         <Grid Grid.Row="2">
             <StackLayout>
-                <CheckBox IsVisible="{Binding HomePageViewModel.Name}" IsChecked="{Binding HomePageViewModel.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"/>
+                <CheckBox IsVisible="{Binding CurrentWeather.Name}" IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"/>
             </StackLayout>
         </Grid>
     </Grid>

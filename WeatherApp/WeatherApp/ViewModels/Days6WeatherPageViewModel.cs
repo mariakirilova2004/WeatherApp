@@ -10,6 +10,7 @@ using WeatherApp.Resources;
 using WeatherApp.Services.Favorites;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace WeatherApp.Models
 {
@@ -44,20 +45,25 @@ namespace WeatherApp.Models
 
         public IFavoritesService favoritesService { get; set; } = new FavoritesService();
 
-        public async Task TransformWeatherToDisplay(Root root)
+        public ICollection<SuggestionViewModel> SuggestionCollection { get; set;  } = new List<SuggestionViewModel>();
+
+
+        public async Task TransformWeatherToDisplay(Root root, Suggestion suggestion)
         {
             try
             {
                 var fv = await SecureStorage.GetAsync("FavouritesList");
                 if (fv != null)
                 {
-                    this.IsFavorite = fv.Contains(root.City.Name);
+                    this.IsFavorite = fv.ToLower().Contains(root.City.Name.ToLower());
                 }
                 else this.IsFavorite = false;
 
                 this.Name = root.City.Name;
 
                 this.ListDayWeatherViewModel = new List<DayWeatherViewModel>();
+
+                this.SuggestionCollection = suggestion.ListCities.Select(x => new SuggestionViewModel() { Name = x.Name }).Distinct().ToList();
 
                 var dayOne = root.List.Where(l => DateTime.Parse(l.DtTxt).Day == DateTime.Now.Day).ToList();
                 var d1 = new List() { Main = new Main(), Weather = new List<Weather>(), Wind = new Wind() };

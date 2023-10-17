@@ -16,8 +16,7 @@ namespace WeatherApp.Services.Location
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
-                _cts = new CancellationTokenSource();
-                var location = await Geolocation.GetLocationAsync(request, _cts.Token);
+                var location = await Geolocation.GetLocationAsync(request);
 
                 if (location != null)
                 {

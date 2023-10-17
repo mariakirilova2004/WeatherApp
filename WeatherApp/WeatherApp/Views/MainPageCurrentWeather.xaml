@@ -11,7 +11,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid RowSpacing="0">
+        <Grid Grid.Row="0" RowSpacing="0">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -19,6 +20,9 @@
             <BoxView Grid.RowSpan="2" BackgroundColor="#7585BA" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <Image Aspect="AspectFill" Grid.RowSpan="2" Source="bg.png" Opacity="0.5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <Image Aspect="AspectFill" Grid.RowSpan="2" Source="overlay.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="End" Padding="0, 25, 25, 0">
+                <CheckBox IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" VerticalOptions="Center"></CheckBox>
+            </StackLayout>
             <Grid Grid.Row="1" Margin="50, 50, 50, 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -34,7 +38,6 @@
                         <StackLayout>
                             <Image Source="{Binding CurrentWeather.Icon}" WidthRequest="67" HeightRequest="50"/>
                             <Label Text="{Binding CurrentWeather.WeatherState}" TextColor="White" FontSize="13" HorizontalOptions="Center"/>
-                            <CheckBox IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="End"/>
                         </StackLayout>
                     </Grid>
                     <Grid Grid.Column="1" VerticalOptions="Center">

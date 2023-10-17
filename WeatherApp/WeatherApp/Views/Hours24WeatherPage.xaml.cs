@@ -54,7 +54,7 @@ namespace WeatherApp.Views
         {
             try
             {
-                await this.vm.CurrentWeather.favoritesService.SetFavourites(this.vm.Days6Weather.IsFavorite, this.vm.Days6Weather.Name);
+                await this.vm.CurrentWeather.favoritesService.SetFavourites(this.vm.CurrentWeather.IsFavorite, this.vm.CurrentWeather.Name);
             }
             catch (Exception ex)
             {

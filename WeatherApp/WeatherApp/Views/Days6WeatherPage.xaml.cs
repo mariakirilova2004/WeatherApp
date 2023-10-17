@@ -37,12 +37,14 @@ namespace WeatherApp.Views
             try
             {
                 var metrics = await SecureStorage.GetAsync("metrics");
-                var result = await vm.WeatherAPI.GetWeatherDataAsync(vm.SearchBar.Text, metrics);
+                var cities = await vm.WeatherAPI.GetCityNames(vm.SearchBar.Text);
+                var result = await vm.WeatherAPI.GetWeatherDataAsync(cities.ListCities[0].Name, metrics);
                 if (result != null)
                 {
-                    await vm.Days6Weather.TransformWeatherToDisplay(result);
+                    await vm.Days6Weather.TransformWeatherToDisplay(result, cities);
 
-                    CollectionView.ItemsSource = vm.Days6Weather.ListDayWeatherViewModel;
+                    Collection.ItemsSource = vm.Days6Weather.ListDayWeatherViewModel;
+                    CollectionCities.ItemsSource = vm.Days6Weather.SuggestionCollection;
                 }
             }
             catch (Exception ex)
