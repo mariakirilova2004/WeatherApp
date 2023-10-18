@@ -35,6 +35,13 @@ namespace WeatherApp.Models
             set { this.SetProperty(ref _name, value); }
         }
 
+        private string _country;
+        public string Country// Turkey
+        {
+            get { return _country; }
+            set { this.SetProperty(ref _country, value); }
+        }
+
         private string _metric;
         public string Metric // CELSIUS
         {
@@ -87,6 +94,16 @@ namespace WeatherApp.Models
             }
         }
 
+        private bool _isCheckVisible;
+        public bool IsCheckVisible // true/false
+        {
+            get { return _isCheckVisible; }
+            set //begin invoke on main
+            {
+                this.SetProperty(ref _isCheckVisible, value);
+            }
+        }
+
         private List<HourWeatherViewModel> _ListHourWeatherViewModel;
         public List<HourWeatherViewModel> ListHourWeatherViewModel // List of HourWeatherViewModel
         {
@@ -96,11 +113,15 @@ namespace WeatherApp.Models
 
         public IFavoritesService favoritesService { get; set; } = new FavoritesService();
 
-        public async Task TransformWeatherToDisplay(Root root)
+        public ICollection<SuggestionViewModel> SuggestionCollection { get; set; } = new List<SuggestionViewModel>();
+
+        public async Task TransformWeatherToDisplay(Root root, Suggestion suggestion)
         {
             this.Temp = Math.Round(root.List[0].Main.Temp).ToString();
 
             this.Name = root.City.Name;
+
+            this.Country = root.City.Country;
 
             var dayOfWeek = DateTime.Parse(root.List[0].DtTxt).DayOfWeek.ToString();
 
@@ -133,6 +154,14 @@ namespace WeatherApp.Models
                 this.Pressure = root.List[0].Main.Pressure.ToString() + "hpa";
 
                 this.ListHourWeatherViewModel = root.List.Take(9).Select(l => new HourWeatherViewModel(l)).ToList();
+
+                this.IsCheckVisible = false;
+
+                if(suggestion != null)
+                {
+                    this.SuggestionCollection = suggestion.ListCities.Select(x => new SuggestionViewModel() { Name = $"{x.Name}, {x.Country}" }).Distinct().ToList();
+                    this.IsCheckVisible = true;
+                }
 
                 for (int i = 0; i < this.ListHourWeatherViewModel.Count; i++)
                 {

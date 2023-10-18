@@ -25,8 +25,18 @@ namespace WeatherApp.Services.Weather
         public async Task<Root> GetWeatherDataAsync(string city, string units)
         {
             if (units == null) units = "metric";
-            var url = string.Format(BaseUrlGetWeather, city, units, ApiKey);
-            var response = await HttpClient.GetStringAsync(url);
+            var url = string.Format(BaseUrlGetWeather, city.ToLower(), units, ApiKey);
+
+            var response = "";
+
+            try
+            {
+                response = await HttpClient.GetStringAsync(url);
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             if (!string.IsNullOrEmpty(response))
             {
@@ -38,14 +48,14 @@ namespace WeatherApp.Services.Weather
 
         public async Task<Suggestion> GetCityNames(string city)
         {
-            var url = string.Format(BaseUrlGetCities, 4, ApiKey, city);
+            var url = string.Format(BaseUrlGetCities, 4, ApiKey, city.ToLower());
             var response = await HttpClient.GetStringAsync(url);
 
             if (!string.IsNullOrEmpty(response))
             {
                 Suggestion sg = new Suggestion();
                 sg.ListCities = JsonConvert.DeserializeObject<List<SuggestionCity>>(response);
-                sg.ListCities = sg.ListCities.Where(s => s.Name == city).Take(1).ToList();
+                sg.ListCities = sg.ListCities.Where(s => s.Name.ToLower() == city.ToLower()).Take(1).ToList();
                 return sg;
             }
 

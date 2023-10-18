@@ -34,7 +34,7 @@ namespace WeatherApp.Views
 
                 var result = await vm.WeatherAPI.GetWeatherDataAsync(name.Locality.ToString(), metrics);
 
-                await vm.CurrentWeather.TransformWeatherToDisplay(result);
+                await vm.CurrentWeather.TransformWeatherToDisplay(result, null);
 
                 CollectionView.ItemsSource = vm.CurrentWeather.ListHourWeatherViewModel;
             }

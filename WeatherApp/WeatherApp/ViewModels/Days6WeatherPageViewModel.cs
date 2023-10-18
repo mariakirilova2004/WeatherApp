@@ -43,6 +43,16 @@ namespace WeatherApp.Models
             }
         }
 
+        private bool _isCheckVisible;
+        public bool IsCheckVisible // true/false
+        {
+            get { return _isCheckVisible; }
+            set //begin invoke on main
+            {
+                this.SetProperty(ref _isCheckVisible, value);
+            }
+        }
+
         public IFavoritesService favoritesService { get; set; } = new FavoritesService();
 
         public ICollection<SuggestionViewModel> SuggestionCollection { get; set;  } = new List<SuggestionViewModel>();
@@ -63,7 +73,13 @@ namespace WeatherApp.Models
 
                 this.ListDayWeatherViewModel = new List<DayWeatherViewModel>();
 
-                this.SuggestionCollection = suggestion.ListCities.Select(x => new SuggestionViewModel() { Name = x.Name }).Distinct().ToList();
+                this.IsCheckVisible = false;
+
+                if (suggestion != null)
+                {
+                    this.SuggestionCollection = suggestion.ListCities.Select(x => new SuggestionViewModel() { Name = $"{x.Name}, {x.Country}" }).Distinct().ToList();
+                    this.IsCheckVisible = true;
+                }
 
                 var dayOne = root.List.Where(l => DateTime.Parse(l.DtTxt).Day == DateTime.Now.Day).ToList();
                 var d1 = new List() { Main = new Main(), Weather = new List<Weather>(), Wind = new Wind() };

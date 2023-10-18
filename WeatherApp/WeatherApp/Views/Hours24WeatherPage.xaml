@@ -5,27 +5,36 @@
              BackgroundColor="#758ABA">
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid RowSpacing="0">
             <StackLayout>
-                <SearchBar x:Name="searchBar" TextColor="White" Text="{Binding SearchBar.Text, Mode=TwoWay}" TextChanged="SearchBar_TextChanged" />
+                <SearchBar x:Name="searchBar" Text="{Binding SearchBar.Text, Mode=TwoWay}" TextColor="White" TextChanged="SearchBar_TextChanged"/>
+                <CollectionView x:Name="CollectionCities" VerticalOptions="StartAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Name}" FontSize="Medium" TextColor="White" Padding="40, 0, 40, 0"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </Grid>
+        <StackLayout Orientation="Vertical" HorizontalOptions="End" Padding="0, 50, 25, 0">
+            <CheckBox IsVisible="{Binding CurrentWeather.IsCheckVisible}" IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" VerticalOptions="Center"></CheckBox>
+        </StackLayout>
         <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" Padding="0,40,0,40" HorizontalOptions="CenterAndExpand">
             <CollectionView x:Name="CollectionView" ItemsLayout="VerticalGrid, 3">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout BackgroundColor="#758ABA" Padding="0,20,0,20" HorizontalOptions="CenterAndExpand"
                             VerticalOptions="CenterAndExpand">
-                                <Label x:Name="timeTxt" 
+                            <Label x:Name="timeTxt" 
                                     Text="{Binding Time}"
                                     TextColor="White"
                                     FontSize="17"
                                     HorizontalOptions="CenterAndExpand"/>
-                                <Label x:Name="tempTxt" 
+                            <Label x:Name="tempTxt" 
                                            Text="{Binding Temp,StringFormat='{}{0}°'}" 
                                            TextColor="White"
                                            FontSize="25"
@@ -112,11 +121,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>-->
-        </Grid>
-        <Grid Grid.Row="2">
-            <StackLayout>
-                <CheckBox IsVisible="{Binding CurrentWeather.Name}" IsChecked="{Binding CurrentWeather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"/>
-            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>

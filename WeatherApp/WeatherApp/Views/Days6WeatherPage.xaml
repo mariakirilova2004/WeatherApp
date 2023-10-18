@@ -7,7 +7,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid RowSpacing="0">
             <StackLayout>
@@ -21,6 +20,9 @@
                 </CollectionView>
             </StackLayout>
         </Grid>
+        <StackLayout Orientation="Vertical" HorizontalOptions="End" Padding="0, 50, 25, 0">
+            <CheckBox IsVisible="{Binding Days6Weather.IsCheckVisible}" IsChecked="{Binding Days6Weather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" VerticalOptions="Center"/>
+        </StackLayout>
         <Grid Grid.Row="1" ColumnSpacing="2" RowSpacing="2" HeightRequest="900" HorizontalOptions="CenterAndExpand" Padding="0, 10, 0, 10">
             <Label Text="{Binding Name}"/>
             <CollectionView x:Name="Collection" ItemsLayout="VerticalGrid, 3">
@@ -138,11 +140,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>-->
-        </Grid>
-        <Grid Grid.Row="2">
-            <StackLayout>
-                <CheckBox IsVisible="{Binding Days6Weather.Name}" IsChecked="{Binding Days6Weather.IsFavorite, Mode=TwoWay}" CheckedChanged="CheckBox_CheckedChanged" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center"/>
-            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>
