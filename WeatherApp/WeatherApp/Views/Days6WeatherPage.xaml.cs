@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WeatherApp.Logs;
 using WeatherApp.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -60,6 +61,7 @@ namespace WeatherApp.Views
             }
             catch (Exception ex)
             {
+                ex.TraceWarning();
                 await Navigation.PushAsync(new ErrorPage());
             }
         }

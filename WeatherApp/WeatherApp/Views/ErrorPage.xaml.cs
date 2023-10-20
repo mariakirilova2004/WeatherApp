@@ -17,6 +17,11 @@ namespace WeatherApp.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+
+        }
+
         private void Button_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new MainPage();
