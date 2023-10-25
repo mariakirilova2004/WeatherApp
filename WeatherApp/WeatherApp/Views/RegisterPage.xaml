@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.RegisterPage"
+             BackgroundColor="#758ABA">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto, Auto" RowSpacing="20" VerticalOptions="CenterAndExpand" Padding="30,0">
+            <Image Grid.Row="0" Source="w01d.png" HeightRequest="150" WidthRequest="150" Aspect="AspectFit"/>
+            <Label Grid.Row="1" FontAttributes="Bold" TextColor="White" FontSize="30" HorizontalTextAlignment="Center" Text="Create your account now:"/>
+            <Label Grid.Row="2" Text="Email" TextColor="White" FontSize="15" />
+            <Entry Grid.Row="3" x:Name="email" Placeholder="yourname@domain.com" HeightRequest="40" BackgroundColor="#758ABA" />
+            <Label Grid.Row="4" Text="Password" TextColor="White" FontSize="15" />
+            <Entry Grid.Row="5" x:Name="password1" IsPassword="True" Placeholder="******" HeightRequest="40" BackgroundColor="#758ABA"/>
+            <Label Grid.Row="6" Text="Confirm Password" TextColor="White" FontSize="15" />
+            <Entry Grid.Row="7" x:Name="password2" IsPassword="True" Placeholder="******" HeightRequest="40" BackgroundColor="#758ABA"/>
+            <Label  Grid.Row="8" IsVisible="{Binding IsVisible, Mode=TwoWay}" Text="{Binding Message, Mode=TwoWay}" FontAttributes="Bold" FontSize="12" TextColor="DarkRed" HorizontalOptions="Start" />
+            <Button Clicked="Button_Clicked"  Grid.Row="9" BackgroundColor="White" Text="Register" TextColor="#758ABA" CornerRadius="20" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand"/>
+            <Label Grid.Row="10" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Already have an account? " TextColor="White"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Grid.Row="11" HeightRequest="30" WidthRequest="20" FontSize="10" Clicked="Button_Clicked_1" Text="Log in" TextColor="#758ABA" BackgroundColor="White"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551182504932",
+    "project_id": "weatherapp-94167",
+    "storage_bucket": "weatherapp-94167.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551182504932:android:169a92320d0d67a30fadf1",
+        "android_client_info": {
+          "package_name": "bg.kirilova.weatherapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7To68W_Zf1_e6U4HgmdWY8x-H4iv86xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

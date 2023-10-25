@@ -4,6 +4,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using System.IO;
+using SQLite;
+using Plugin.FirebasePushNotification;
 
 namespace WeatherApp.Droid
 {
@@ -17,7 +20,17 @@ namespace WeatherApp.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "WeatherApp");
+
+            // Create the folder path.
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "WeatherApp.db");
+
+            LoadApplication(new App(databaseFileName));
+
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -303,6 +303,9 @@
   <data name="shower snow" xml:space="preserve">
     <value>shower snow</value>
   </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
   <data name="sleet" xml:space="preserve">
     <value>sleet</value>
   </data>

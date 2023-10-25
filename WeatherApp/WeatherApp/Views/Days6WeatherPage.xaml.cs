@@ -37,7 +37,7 @@ namespace WeatherApp.Views
         {
             try
             {
-                var metrics = await SecureStorage.GetAsync("metrics");
+                var metrics = await SecureStorage.GetAsync(App.LoggedInUser + "metrics");
                 var cities = await vm.WeatherAPI.GetCityNames(vm.SearchBar.Text);
                 var result = await vm.WeatherAPI.GetWeatherDataAsync(cities.ListCities[0].Name, metrics);
                 if (result != null)

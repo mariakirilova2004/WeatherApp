@@ -130,11 +130,11 @@ namespace WeatherApp.Models
 
             try
             {
-                var metric = await SecureStorage.GetAsync("metrics");
+                var metric = await SecureStorage.GetAsync(App.LoggedInUser + "metrics");
                 if (metric == "metric") this.Metric = AppResources.CELSIUS;
                 if (metric == "imperial") this.Metric = AppResources.FARENHAIT;
 
-                var fv = await SecureStorage.GetAsync("FavouritesList");
+                var fv = await SecureStorage.GetAsync(App.LoggedInUser + "Favourites");
                 if (fv != null)
                 {
                     this.IsFavorite = fv.ToLower().Contains(this.Name.ToLower());

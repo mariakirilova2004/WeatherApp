@@ -16,30 +16,30 @@ namespace WeatherApp.Services.Favorites
                 if (!isFavorite)
                 {
                     //JSON serialization
-                    string list = await SecureStorage.GetAsync("FavouritesList");
+                    string list = await SecureStorage.GetAsync(App.LoggedInUser + "Favourites");
                     if(!list.Contains(name))
                     {
                         list += $" {name}";
-                        await SecureStorage.SetAsync("FavouritesList", list);
+                        await SecureStorage.SetAsync(App.LoggedInUser + "Favourites", list);
                     }
                     else
                     {
                         list = list.Remove(list.IndexOf(name), name.Count());
-                        await SecureStorage.SetAsync("FavouritesList", list);
+                        await SecureStorage.SetAsync(App.LoggedInUser + "Favourites", list);
                     }                    
                 }
-                else if (await SecureStorage.GetAsync("FavouritesList") != null)
+                else if (await SecureStorage.GetAsync(App.LoggedInUser + "Favourites") != null)
                 {
-                    string list = await SecureStorage.GetAsync("FavouritesList");
+                    string list = await SecureStorage.GetAsync(App.LoggedInUser + "Favourites");
                     if (!list.Contains(name))
                     {
                         list += $" {name}";
-                        await SecureStorage.SetAsync("FavouritesList", list);
+                        await SecureStorage.SetAsync(App.LoggedInUser + "Favourites", list);
                     }
                 }
                 else
                 {
-                    await SecureStorage.SetAsync("FavouritesList", name);
+                    await SecureStorage.SetAsync(App.LoggedInUser + "Favourites", name);
                 }
             }
             catch (Exception ex)

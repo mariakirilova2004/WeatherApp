@@ -30,7 +30,7 @@ namespace WeatherApp.Views
 
                 var name = await vm.LocationService.GetCurrentLocationNameAsync(double.Parse(locationcoord.Latitude.ToString()), double.Parse(locationcoord.Longitude.ToString()));
 
-                var metrics = await SecureStorage.GetAsync("metrics");
+                var metrics = await SecureStorage.GetAsync(App.LoggedInUser + "metrics");
 
                 var result = await vm.WeatherAPI.GetWeatherDataAsync(name.Locality.ToString(), metrics);
 

@@ -23,8 +23,8 @@ namespace WeatherApp.ViewModels
                     new MainPageFlyoutMenuItem { Id = 3, Title = AppResources.SettingsMenu, TargetType = typeof(SettingsPage) },
                     new MainPageFlyoutMenuItem { Id = 4, Title = AppResources.AboutMenu, TargetType = typeof(AboutPage) },
                     new MainPageFlyoutMenuItem { Id = 5, Title = AppResources.FavouritesMenu, TargetType = typeof(FavouritesPage) },
-                    new MainPageFlyoutMenuItem { Id = 5, Title = "CrashPage", TargetType = typeof(CrashPage) }
-                });
+                    new MainPageFlyoutMenuItem { Id = 6, Title = AppResources.SignOut, TargetType = typeof(SignOut) }
+            });
         }
 
         #region INotifyPropertyChanged Implementation

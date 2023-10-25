@@ -36,7 +36,7 @@ namespace WeatherApp.Views
 
                 var res = await vm.Favourites.GetFavouritesNameAsync();
 
-                var metrics = await SecureStorage.GetAsync("metrics");
+                var metrics = await SecureStorage.GetAsync(App.LoggedInUser + "metrics");
 
                 List<Root> result = new List<Root>();
 

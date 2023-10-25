@@ -210,6 +210,9 @@
   <data name="shower rain" xml:space="preserve">
     <value>дъжд</value>
   </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Излизане от профил</value>
+  </data>
   <data name="snow" xml:space="preserve">
     <value>сняг</value>
   </data>

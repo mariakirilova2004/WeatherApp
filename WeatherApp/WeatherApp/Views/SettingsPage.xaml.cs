@@ -48,8 +48,8 @@ namespace WeatherApp.Views
                 {
                     try
                     {
-                        if (picker2.SelectedItem.ToString() == "CELSIUS") await SecureStorage.SetAsync("metrics", "metric");
-                        if (picker2.SelectedItem.ToString() == "FARENHAIT") await SecureStorage.SetAsync("metrics", "imperial");
+                        if (picker2.SelectedItem.ToString() == "CELSIUS") await SecureStorage.SetAsync(App.LoggedInUser + "metrics", "metric");
+                        if (picker2.SelectedItem.ToString() == "FARENHAIT") await SecureStorage.SetAsync(App.LoggedInUser + "metrics", "imperial");
                     }
                     catch (Exception ex)
                     {

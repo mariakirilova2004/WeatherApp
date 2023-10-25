@@ -22,13 +22,13 @@ namespace WeatherApp.ViewModels
             try
             {
                 string list;
-                if (await SecureStorage.GetAsync("FavouritesList") != null)
+                if (await SecureStorage.GetAsync(App.LoggedInUser + "Favourites") != null)
                 {
-                    list = await SecureStorage.GetAsync("FavouritesList");
+                    list = await SecureStorage.GetAsync(App.LoggedInUser + "Favourites");
                 }
                 else
                 {
-                    await SecureStorage.SetAsync("FavouritesList", "");
+                    await SecureStorage.SetAsync(App.LoggedInUser + "Favourites", "");
                     return new List<string>();
                 }
                 list = list.Trim();
