@@ -25,6 +25,7 @@ namespace WeatherApp.Views
             var model = this.BindingContext as RegisterLoginPageViewModel;
 
             SQLiteConnection connection = new SQLiteConnection(App.DatabaseLocation);
+            connection.CreateTable<User>();
             var table = connection.Table<User>();
             var user = table.FirstOrDefault(v => v.Email == email.Text);
             if (user == null || user.Password != password.Text)

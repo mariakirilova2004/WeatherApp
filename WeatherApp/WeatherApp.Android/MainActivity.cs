@@ -1,12 +1,18 @@
 ﻿using System;
-
+using Android.Gms.Common;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using System.IO;
 using SQLite;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Android.Util;
 using Plugin.FirebasePushNotification;
+using Android.Widget;
+using static Firebase.Messaging.RemoteMessage;
+using System.Collections.Generic;
 
 namespace WeatherApp.Droid
 {
@@ -28,10 +34,10 @@ namespace WeatherApp.Droid
 
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "WeatherApp.db");
 
-            LoadApplication(new App(databaseFileName));
 
-            FirebasePushNotificationManager.ProcessIntent(this, Intent);
+            LoadApplication(new App(databaseFileName));
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

@@ -26,7 +26,7 @@ namespace WeatherApp.Views
         private void Button_Clicked(object sender, EventArgs e)
         {
             var model = this.BindingContext as RegisterLoginPageViewModel;
-            IEmailService emailService = new EmailService();
+            IUserValidatorService userValidatorService = new UserValidatorService();
 
             User user = new User()
             {
@@ -35,19 +35,16 @@ namespace WeatherApp.Views
             };
 
             SQLiteConnection connection = new SQLiteConnection(App.DatabaseLocation);
-            connection.CreateTable<User>();
             int rows = 0;
-            var table = connection.Table<User>();
-            var emailExists = table.Any(v => v.Email == user.Email);
-            if (emailExists)
+            if (userValidatorService.DoesEmailExists(user.Email))
             {
                 model.IsVisible = true;
                 model.Message = "This email is already used!";
                 return;
             }
-            if (user.Email != "" && emailService.IsValidEmail(user.Email))
+            if (userValidatorService.IsValidEmail(user.Email))
             {
-                if(user.Password.Length < 8 || !user.Password.Any(x => int.Parse(x.ToString()) >= 0 && int.Parse(x.ToString()) <= 9))
+                if(userValidatorService.IsValidPassword(user.Password))
                 {
                     model.IsVisible = true;
                     model.Message = "Password should be at least 8 characters and has at least one digit!";

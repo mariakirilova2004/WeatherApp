@@ -14,7 +14,7 @@ namespace WeatherApp.Views
     {
         public SignOut()
         {
-            App.LoggedInUser = "";
+            App.LoggedInUser = null;
             App.Current.MainPage = new LoginPage();
             //InitializeComponent();
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.FirebasePushNotification;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using WeatherApp.Views;
@@ -12,6 +14,9 @@ namespace WeatherApp
         public static string DatabaseLocation { get; set; }
 
         public static string LoggedInUser { get; set; }
+
+        public static string Data { get; set; }
+
         public App()
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
@@ -30,7 +35,6 @@ namespace WeatherApp
         protected override void OnStart()
         {
         }
-
         protected override void OnSleep()
         {
         }
